@@ -13,9 +13,9 @@ endif
 
 
 CC=arm-kindle_k5-linux-gnueabi-gcc  # gcc or g++
-CFLAGS+=-ggdb3 -Os
+CFLAGS+=-Os
 LDFLAGS+=-Wl,--gc-sections
-CFLAGS+=-ggdb3 -Wall -DNORMALUNIX -DLINUX -DSNDSERV -D_DEFAULT_SOURCE -I./include -std=c99 -DKINDLE # -DUSEASM
+CFLAGS+=-Wall -DNORMALUNIX -DLINUX -DSNDSERV -D_DEFAULT_SOURCE -I./include -std=c99 -DKINDLE # -DUSEASM
 LIBS+=-lm -lc -lX11 -L/kroot/lib -L/kroot/usr/lib
 
 # subdirectory for objects

@@ -1,0 +1,12 @@
+{
+    "items": [
+        {
+            "name": "Doom",
+            "priority": 0,
+            "action": "./doom.sh",
+            "params": "",
+            "exitmenu": true,
+            "status": false
+        }
+    ]
+}

@@ -2,6 +2,8 @@
 
 Doom port for touchscreen Kindles, based on [doomgeneric](https://github.com/ozkl/doomgeneric).
 
+For discussions, see [this thread on the MobileRead forums](https://www.mobileread.com/forums/showthread.php?p=4313126).
+
 ![Doom running on Kindle](screenshots/kindle.png)
 
 ## Compatibility

@@ -1,60 +1,34 @@
-# doomgeneric
-The purpose of doomgeneric is to make porting Doom easier.
-Of course Doom is already portable but with doomgeneric it is possible with just a few functions.
+# Kindle Touch Doom
 
-To try it you will need a WAD file (game data). If you don't own the game, shareware version is freely available (doom1.wad).
+Doom port for touchscreen Kindles, based on [doomgeneric](https://github.com/ozkl/doomgeneric).
 
-# porting
-Create a file named doomgeneric_yourplatform.c and just implement these functions to suit your platform.
-* DG_Init
-* DG_DrawFrame
-* DG_SleepMs
-* DG_GetTicksMs
-* DG_GetKey
+![Doom running on Kindle](screenshots/kindle.png)
 
-|Functions            |Description|
-|---------------------|-----------|
-|DG_Init              |Initialize your platfrom (create window, framebuffer, etc...).
-|DG_DrawFrame         |Frame is ready in DG_ScreenBuffer. Copy it to your platform's screen.
-|DG_SleepMs           |Sleep in milliseconds.
-|DG_GetTicksMs        |The ticks passed since launch in milliseconds.
-|DG_GetKey            |Provide keyboard events.
-|DG_SetWindowTitle    |Not required. This is for setting the window title as Doom sets this from WAD file.
+## Compatibility
 
-### main loop
-At start, call doomgeneric_Create().
+- Only tested on [KT3](https://wiki.mobileread.com/wiki/Kindle_Serial_Numbers)
+- Should work on other [KT](https://wiki.mobileread.com/wiki/Kindle_Serial_Numbers) models [with the same 600 × 800 screen](https://en.wikipedia.org/wiki/Amazon_Kindle#Specifications)
+- Will currently not work on the higher-res Paperwhite models
 
-In a loop, call doomgeneric_Tick().
+## Installation Instructions
 
-In simplest form:
-```
-int main(int argc, char **argv)
-{
-    doomgeneric_Create(argc, argv);
+1. [Jailbreak](https://www.mobileread.com/forums/showthread.php?t=320564) your Kindle
+2. Install the [KUAL](https://www.mobileread.com/forums/showthread.php?t=203326) extension by unzipping the GitHub release into the `extensions` folder on your Kindle.
+3. Put your `doom.wad` into the folder of this extension.
+4. Launch using KUAL
+5. To exit, press the `ESC` on-screen button, select "Quit Game", then `Enter`, then `Y` (see below for the button locations)
 
-    while (1)
-    {
-        doomgeneric_Tick();
-    }
-    
-    return 0;
-}
-```
+### Controls
 
-# sound
-Sound is much harder to implement! If you need sound, take a look at SDL port. It fully supports sound and music! Where to start? Define FEATURE_SOUND, assign DG_sound_module and DG_music_module.
+![Controls for Doom running on Kindle](screenshots/controls.png)
 
-# platforms
-Ported platforms include Windows, X11, SDL, Soso. Just look at (doomgeneric_win.c or doomgeneric_xlib.c).
+## Compilation Instructions
 
-## Windows
-![Windows](screenshots/windows.png)
+- TBD
 
-## X11 - Ubuntu
-![Ubuntu](screenshots/ubuntu.png)
+## Credits
 
-## X11 - FreeBSD
-![FreeBSD](screenshots/freebsd.png)
-
-## SDL
-![SDL](screenshots/sdl.png)
+- Doomgeneric: [ozkl on GitHub](https://github.com/ozkl/doomgeneric)
+- Framebuffer Display & Dithering Code: [geekmaster on the MobileRead Forums](https://www.mobileread.com/forums/showthread.php?t=177455)
+- C Compiler Toolchain: [dtinth on GitHub](https://github.com/dtinth/docker-kindle-k5-toolchain)
+- Finger Icon: [inspire-studio on Pixabay](https://pixabay.com/vectors/touch-digital-icon-finger-press-6602643/)

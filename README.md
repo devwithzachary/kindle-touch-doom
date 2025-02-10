@@ -62,5 +62,5 @@ You should now see two windows like this:
 
 - Doomgeneric: [ozkl on GitHub](https://github.com/ozkl/doomgeneric)
 - Framebuffer Display & Dithering Code: [geekmaster on the MobileRead Forums](https://www.mobileread.com/forums/showthread.php?t=177455)
-- C Compiler Toolchain: [dtinth on GitHub](https://github.com/dtinth/docker-kindle-k5-toolchain)
+- C Compiler Toolchain: [KMC Kindle SDK](https://github.com/KindleModding/kindle-sdk) & [KOReader cross-compile toolchains](https://github.com/koreader/koxtoolchain)
 - Finger Icon: [inspire-studio on Pixabay](https://pixabay.com/vectors/touch-digital-icon-finger-press-6602643/)

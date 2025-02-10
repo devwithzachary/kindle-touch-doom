@@ -2,7 +2,9 @@
 
 Doom port for touchscreen Kindles, based on [doomgeneric](https://github.com/ozkl/doomgeneric).
 
-For discussions, see [this thread on the MobileRead forums](https://www.mobileread.com/forums/showthread.php?p=4313126).
+For discussions, see [this thread on the MobileRead forums](https://www.mobileread.com/forums/showthread.php?p=4313126), or join my Discord:
+
+[![Join the Discord Server](https://img.shields.io/discord/252874887113342976?logo=discord)](https://www.himbeer.me/discord)
 
 ![Doom running on Kindle](screenshots/kindle.png)
 

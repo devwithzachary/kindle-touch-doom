@@ -42,7 +42,6 @@ typedef unsigned int u32;
 typedef unsigned short u16;
 typedef unsigned char u8;
 
-u32 __invalid_size_argument_for_IOC; // ioctl.h bug fix for tcc
 //----- eink definitions from eink_fb.h and mxcfb.h -----
 
 #define EU3 0x46dd

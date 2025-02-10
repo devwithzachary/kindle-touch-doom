@@ -12,11 +12,11 @@ else
 endif
 
 
-CC=arm-kindle_k5-linux-gnueabi-gcc  # gcc or g++
+CC=arm-kindlepw2-linux-gnueabi-gcc  # gcc or g++
 CFLAGS+=-Os
 LDFLAGS+=-Wl,--gc-sections
-CFLAGS+=-Wall -DNORMALUNIX -DLINUX -DSNDSERV -D_DEFAULT_SOURCE -I./include -std=c99 -DKINDLE # -DUSEASM
-LIBS+=-lm -lc -lX11 -L/kroot/lib -L/kroot/usr/lib
+CFLAGS+=-Wall -DNORMALUNIX -DLINUX -DSNDSERV -D_DEFAULT_SOURCE -DKINDLE # -DUSEASM
+LIBS+=-lm -lc -lX11
 
 # subdirectory for objects
 OBJDIR=build_kindle
@@ -35,7 +35,7 @@ clean:
 
 $(OUTPUT):	$(OBJS)
 	@echo [Linking $@]
-	$(VB)$(CC) --sysroot=/kroot $(CFLAGS) $(LDFLAGS) $(OBJS) \
+	$(VB)$(CC) $(CFLAGS) $(LDFLAGS) $(OBJS) \
 	-o $(OUTPUT) $(LIBS) -Wl,-Map,$(OUTPUT).map
 	@echo [Size]
 	-$(CROSS_COMPILE)size $(OUTPUT)

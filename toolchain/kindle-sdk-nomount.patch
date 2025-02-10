@@ -1,0 +1,25 @@
+diff --git a/gen-sdk.sh b/gen-sdk.sh
+old mode 100644
+new mode 100755
+index 81000d7..3edd872
+--- a/gen-sdk.sh
++++ b/gen-sdk.sh
+@@ -75,7 +75,8 @@ Setup_SDK() {
+     cd "./cache/${tc_target}/firmware/"
+         gunzip rootfs.img.gz
+         mkdir mnt
+-        sudo mount -o loop rootfs.img mnt
++        # sudo mount -o loop rootfs.img mnt
++        7zz x rootfs.img -omnt/ -snld
+     cd ../../..
+
+     echo "[*] Wiping target pkgconfig files"
+@@ -165,7 +166,7 @@ Setup_SDK() {
+
+     echo "[*] Cleaning up"
+     cd "./cache/${tc_target}/firmware/"
+-        sudo umount mnt
++        # sudo umount mnt
+     cd ../../..
+
+     echo "===================================================================================================="

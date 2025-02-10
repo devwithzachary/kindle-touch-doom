@@ -3,6 +3,9 @@
 *.DS_Store
 *.log
 *.user
-.vs/
-Debug/
-Release/
+*.map
+*.zip
+*.wad
+doomgeneric/doomgeneric
+doomgeneric/doomgeneric_kindle
+kual_extension/doom

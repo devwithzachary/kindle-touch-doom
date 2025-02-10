@@ -26,7 +26,35 @@ For discussions, see [this thread on the MobileRead forums](https://www.mobilere
 
 ## Compilation Instructions
 
-- TBD
+### Compile for Kindle
+
+In the `toolchain` directory is a Dockerfile that can be used to build a toolchain based on the [KMC Kindle SDK](https://github.com/KindleModding/kindle-sdk) and the [KOReader cross-compile toolchains](https://github.com/koreader/koxtoolchain), inspired by the [Kindle Modding Wiki tutorial](https://kindlemodding.org/kindle-dev/gtk-tutorial/prerequisites.html).
+
+It can be used like this:
+
+1. Build the Docker image:
+    - `docker build ./toolchain -t "himbeer/kindle-touch-doom"`
+    - (you only need to do this once, it will take over 10 minutes)
+2. Use the Docker image to build the source code of this project:
+    - `docker run --rm -v ./doomgeneric:/source himbeer/kindle-touch-doom -c "cd /source && make clean && make"`
+
+Or alternatively, run `./toolchain/docker-build.sh`.
+
+The output binary will now be at the path `./doomgeneric/doomgeneric_kindle` and can be copied to your Kindle.
+
+To use it in the KUAL extension, rename it to `doom` and copy it into the directory `./kual_extension` like so: `mv doomgeneric/doomgeneric_kindle kual_extension/doom`. Then copy the entire `kual_extension` directory into the `extensions` directory of your jailbroken Kindle and name it `Doom`.
+
+### Compile for PC
+
+In order to make debugging easier, there is a PC version that opens two windows to simulate the Kindle screen.
+
+It can be built using the Makefile.pc like this: `make -f Makefile.pc clean && make -f Makefile.pc`
+
+Then it can be launched like this: `./doomgeneric -iwad your_wad_file.wad -scaling 2`
+
+You should now see two windows like this:
+
+<img src="screenshots/pc_windows.png" alt="Two windows, one with the dithered Kindle framebuffer and one with the plain Doom framebuffer" width="800">
 
 ## Credits
 

@@ -35,12 +35,15 @@ In the `toolchain` directory is a Dockerfile that can be used to build a toolcha
 It can be used like this:
 
 1. Build the Docker image:
-    - `docker build ./toolchain -t "himbeer/kindle-touch-doom"`
+    - For Kindle firmware versions below 5.16.3:
+        - `docker build ./toolchain -t "himbeer/kindle-touch-doom" --build-arg "SDK_TARGET=kindlepw2"`
+    - or for Kindle firmware versions 5.16.3 and above:
+        - `docker build ./toolchain -t "himbeer/kindle-touch-doom" --build-arg "SDK_TARGET=kindlehf"`
     - (you only need to do this once, it will take over 10 minutes)
 2. Use the Docker image to build the source code of this project:
-    - `docker run --rm -v ./doomgeneric:/source himbeer/kindle-touch-doom -c "cd /source && make clean && make"`
+    - `docker run --rm -v ./doomgeneric:/source "himbeer/kindle-touch-doom" -c "cd /source && make clean && make"`
 
-Or alternatively, run `./toolchain/docker-build.sh`.
+Or alternatively, run `./toolchain/docker-build.sh`. The SDK target can be defined using the first parameter. `kindlepw2` is the default. If you are using firmware 5.16.3 or above, then run `./toolchain/docker-build.sh kindlehf`.
 
 The output binary will now be at the path `./doomgeneric/doomgeneric_kindle` and can be copied to your Kindle.
 

@@ -1,5 +1,9 @@
 FROM debian:bookworm
 
+# Chose which SDK target to build
+ARG SDK_TARGET=kindlepw2
+ENV SDK_TARGET=${SDK_TARGET}
+
 # Prevents debconf: unable to initialize frontend: Dialog
 ENV DEBIAN_FRONTEND=noninteractive
 
@@ -7,7 +11,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get update && apt-get upgrade -y
 
 # Install dependencies
-RUN apt-get install -y build-essential autoconf automake bison flex gawk libtool libtool-bin libncurses-dev libgmp-dev libarchive-dev nettle-dev zlib1g-dev curl file git gperf help2man texinfo unzip wget 7zip
+RUN apt-get install -y build-essential autoconf automake bison flex gawk libtool libtool-bin libncurses-dev libgmp-dev libarchive-dev nettle-dev zlib1g-dev curl file git gperf help2man texinfo unzip wget 7zip pkg-config
 
 # Create a non-root user (crosstool-ng doesn't run as root)
 RUN adduser --disabled-password --gecos '' user
@@ -30,7 +34,7 @@ WORKDIR /home/user
 RUN git clone --recursive --depth=1 https://github.com/koreader/koxtoolchain.git
 
 # Build the toolchain
-RUN cd koxtoolchain && ./gen-tc.sh kindlepw2
+RUN cd koxtoolchain && ./gen-tc.sh ${SDK_TARGET}
 
 # Clone the SDK repository
 RUN git clone --recursive --depth=1 https://github.com/KindleModding/kindle-sdk.git
@@ -39,7 +43,7 @@ RUN git clone --recursive --depth=1 https://github.com/KindleModding/kindle-sdk.
 COPY kindle-sdk-nomount.patch /home/user/kindle-sdk-nomount.patch
 
 # Patch and build the SDK
-RUN cd kindle-sdk && git apply /home/user/kindle-sdk-nomount.patch && ./gen-sdk.sh kindlepw2
+RUN cd kindle-sdk && git apply /home/user/kindle-sdk-nomount.patch && chmod u+x ./gen-sdk.sh && ./gen-sdk.sh ${SDK_TARGET}
 
 # Copy the bash environment file
 COPY bash-env.sh /home/user/bash-env.sh

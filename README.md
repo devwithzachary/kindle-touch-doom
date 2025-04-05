@@ -17,7 +17,9 @@ For discussions, see [this thread on the MobileRead forums](https://www.mobilere
 ## Installation Instructions
 
 1. [Jailbreak](https://www.mobileread.com/forums/showthread.php?t=320564) your Kindle
-2. Install the [KUAL](https://www.mobileread.com/forums/showthread.php?t=203326) extension by unzipping the GitHub release into the `extensions` folder on your Kindle.
+2. Install the [KUAL](https://www.mobileread.com/forums/showthread.php?t=203326) extension by unzipping the [GitHub release](https://github.com/HimbeersaftLP/kindle-touch-doom/releases) into the `extensions` folder on your Kindle.
+    - for Kindle firmware versions below 5.16.3, choose the release with `armel` in the file name
+    - for Kindle firmware versions 5.16.3 and above, choose the release with `armhf` in the file name
 3. Put your `doom.wad` into the folder of this extension.
 4. Launch using KUAL
 5. To exit, press the `ESC` on-screen button, select "Quit Game", then `Enter`, then `Y` (see below for the button locations)

@@ -11,8 +11,12 @@ else
 	VB=@
 endif
 
-
-CC=arm-kindlepw2-linux-gnueabi-gcc  # gcc or g++
+# Set CC to arm-kindlepw2-linux-gnueabi-gcc or arm-kindlehf-linux-gnueabihf-gcc depending on which is available
+ifeq (,$(shell command -v arm-kindlehf-linux-gnueabihf-gcc 2>/dev/null))
+	CC=arm-kindlepw2-linux-gnueabi-gcc
+else
+	CC=arm-kindlehf-linux-gnueabihf-gcc
+endif
 CFLAGS+=-Os
 LDFLAGS+=-Wl,--gc-sections
 CFLAGS+=-Wall -DNORMALUNIX -DLINUX -DSNDSERV -D_DEFAULT_SOURCE -DKINDLE # -DUSEASM
